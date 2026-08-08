@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>スマホ補償比較</title>
+<meta name="description" content="主要キャリア・MVNOのスマホ修理・端末補償サービス比較">
+<meta name="theme-color" content="#08101f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="補償比較">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<style>
+:root{--bg:#08101f;--panel:#101a2f;--panel2:#16233d;--line:#2a3857;--text:#edf3ff;--muted:#9eacc7;--accent:#86afff;--good:#58d6a1;--warn:#ffd072;--bad:#ff8b9a}*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:radial-gradient(900px 520px at 0 -10%,rgba(70,115,255,.2),transparent 60%),var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;line-height:1.65;padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}a{color:#a9c8ff;text-decoration:none}.wrap{width:min(100% - 20px,760px);margin:auto;padding:12px 0 calc(34px + env(safe-area-inset-bottom))}.hero{padding:18px 16px;border:1px solid var(--line);border-radius:18px;background:rgba(16,26,47,.92)}.eyebrow{font-size:10px;letter-spacing:.12em;color:#94a7c9;font-weight:800}h1{font-size:30px;line-height:1.14;margin:6px 0 9px;letter-spacing:-.035em}.lead{margin:0;color:#c7d2e7;font-size:13px}.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}.pill{font-size:10px;padding:5px 8px;border:1px solid var(--line);border-radius:999px;background:#111d34;color:#cad5e8}.controls{position:sticky;top:8px;z-index:5;display:grid;gap:8px;margin:12px 0 8px;padding:10px;border:1px solid var(--line);border-radius:15px;background:rgba(8,16,31,.95);backdrop-filter:blur(12px)}input,select{width:100%;min-height:46px;padding:10px 12px;border:1px solid #354665;border-radius:11px;background:#101b31;color:var(--text);font-size:16px;outline:none}.count{font-size:11px;color:var(--muted);margin:7px 3px 10px}.cards{display:grid;gap:12px}.card{overflow:hidden;border:1px solid var(--line);border-radius:16px;background:rgba(16,26,47,.95);box-shadow:0 10px 28px rgba(0,0,0,.16)}.cardHead{padding:14px;background:var(--panel2);border-bottom:1px solid #31425f}.brand{font-size:19px;font-weight:900}.type{font-size:10px;color:#899ab8;margin-top:2px}.status{display:inline-block;margin-top:7px;padding:3px 8px;border-radius:999px;font-size:10px;font-weight:850;border:1px solid #40536f}.ok{color:#8df1be;background:rgba(54,191,127,.12)}.warn{color:#ffda91;background:rgba(232,165,54,.1)}.closed{color:#ffa0ad;background:rgba(220,79,102,.11)}.row{display:grid;grid-template-columns:95px minmax(0,1fr);gap:10px;padding:10px 12px;border-bottom:1px solid #22304c;font-size:12px;overflow-wrap:anywhere}.label{color:#8293b4;font-size:10px;font-weight:850;padding-top:2px}.links{display:flex;flex-wrap:wrap;gap:7px;padding:12px}.links a{flex:1 1 130px;display:flex;align-items:center;justify-content:center;min-height:44px;padding:9px;border:1px solid #37527a;border-radius:10px;background:#12213b;font-size:12px;font-weight:800}.install{position:fixed;right:max(12px,env(safe-area-inset-right));bottom:max(14px,calc(env(safe-area-inset-bottom) + 10px));z-index:20;display:none;border:1px solid #4a6ea8;border-radius:999px;background:#18335c;color:#fff;padding:12px 16px;font-weight:850;box-shadow:0 10px 28px rgba(0,0,0,.35)}.note{margin-top:16px;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(16,26,47,.8);font-size:11px;color:#aebbd0}.empty{padding:30px 12px;text-align:center;color:var(--muted)}@media(min-width:700px){.controls{grid-template-columns:1.4fr repeat(3,1fr)}.cards{grid-template-columns:1fr 1fr}.card{align-self:start}.wrap{width:min(96vw,1200px)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero"><div class="eyebrow">MOBILE DEVICE PROTECTION</div><h1>スマホ補償比較</h1><p class="lead">主要キャリア・MVNOの修理・交換・持込端末・盗難紛失・加入条件を比較。</p><div class="meta"><span class="pill">24ブランド</span><span class="pill">更新：2026-08-08</span><span class="pill">個人用PWA</span></div></header>
+<div class="controls"><input id="q" type="search" placeholder="キャリア・サービス名で検索"><select id="type"><option value="">種別：すべて</option><option>MNO</option><option>オンライン/サブ</option><option>MVNO</option></select><select id="status"><option value="">受付：すべて</option><option>受付中</option><option>一部受付中</option><option>新規受付終了</option><option>自動付帯</option><option>既存回線のみ</option><option>提供終了</option><option>月額補償なし</option></select><select id="byod"><option value="">持込：すべて</option><option value="yes">対応あり</option><option value="conditional">条件付き</option><option value="no">非対応</option></select></div>
+<div id="count" class="count"></div><main id="cards" class="cards"></main>
+<div class="note">料金・対象機種・加入期限は変更されることがあります。契約や修理申込の直前には各カードの公式リンクで最新条件を確認してください。</div>
+</div>
+<button id="install" class="install" type="button">アプリをインストール</button>
+<script src="./data.js"></script>
+<script>
+const $=s=>document.querySelector(s),cards=$('#cards'),q=$('#q'),type=$('#type'),status=$('#status'),byod=$('#byod'),count=$('#count');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function badge(s){return s==='受付中'||s==='自動付帯'?'ok':s.includes('終了')||s==='提供終了'?'closed':'warn'}
+function render(){const query=q.value.trim().toLowerCase();const rows=(window.WARRANTY_DATA||[]).filter(x=>(!query||Object.values(x).join(' ').toLowerCase().includes(query))&&(!type.value||x.type===type.value)&&(!status.value||x.status===status.value)&&(!byod.value||x.byod===byod.value));count.textContent=`${rows.length} / ${(window.WARRANTY_DATA||[]).length} ブランドを表示`;cards.innerHTML=rows.length?rows.map(x=>`<article class="card"><div class="cardHead"><div class="brand">${esc(x.brand.replace(/\s+(MNO|MVNO|オンライン\/サブ)$/,''))}</div><div class="type">${esc(x.type)}</div><span class="status ${badge(x.status)}">${esc(x.reception)}</span></div>${[['サービス',x.service],['月額',x.monthly],['修理・交換負担',x.cost],['補償範囲',x.coverage],['持込端末',x.bring],['盗難・紛失',x.theft],['加入条件',x.join],['補足',x.note]].map(([a,b])=>`<div class="row"><div class="label">${a}</div><div>${esc(b)}</div></div>`).join('')}<div class="links">${x.links.map(l=>`<a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.name)}</a>`).join('')}</div></article>`).join(''):'<div class="empty">条件に一致するブランドがありません。</div>'}
+[q,type,status,byod].forEach(el=>el.addEventListener(el===q?'input':'change',render));render();
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+let deferredPrompt;const install=$('#install');window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;install.style.display='block'});install.addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;install.style.display='none'});window.addEventListener('appinstalled',()=>install.style.display='none');
+</script>
+</body></html>
