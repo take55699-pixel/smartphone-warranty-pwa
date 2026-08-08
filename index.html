@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>スマホ補償比較</title>
-<meta name="description" content="主要キャリア・MVNOのスマホ修理・端末補償サービス比較">
+<meta name="description" content="主要キャリア・MVNO・独立系保険会社のスマホ修理・端末補償サービス比較">
 <meta name="theme-color" content="#08101f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,18 +17,19 @@
 </head>
 <body>
 <div class="wrap">
-<header class="hero"><div class="eyebrow">MOBILE DEVICE PROTECTION</div><h1>スマホ補償比較</h1><p class="lead">主要キャリア・MVNOの修理・交換・持込端末・盗難紛失・加入条件を比較。</p><div class="meta"><span class="pill">24ブランド</span><span class="pill">更新：2026-08-08</span><span class="pill">個人用PWA</span></div></header>
-<div class="controls"><input id="q" type="search" placeholder="キャリア・サービス名で検索"><select id="type"><option value="">種別：すべて</option><option>MNO</option><option>オンライン/サブ</option><option>MVNO</option></select><select id="status"><option value="">受付：すべて</option><option>受付中</option><option>一部受付中</option><option>新規受付終了</option><option>自動付帯</option><option>既存回線のみ</option><option>提供終了</option><option>月額補償なし</option></select><select id="byod"><option value="">持込：すべて</option><option value="yes">対応あり</option><option value="conditional">条件付き</option><option value="no">非対応</option></select></div>
+<header class="hero"><div class="eyebrow">MOBILE DEVICE PROTECTION</div><h1>スマホ補償比較</h1><p class="lead">主要キャリア・MVNO・独立系保険会社の修理・交換・持込端末・盗難紛失・加入条件を比較。</p><div class="meta"><span class="pill">25社・ブランド</span><span class="pill">更新：2026-08-08</span><span class="pill">個人用PWA</span></div></header>
+<div class="controls"><input id="q" type="search" placeholder="キャリア・保険・サービス名で検索"><select id="type"><option value="">種別：すべて</option><option>MNO</option><option>オンライン/サブ</option><option>MVNO</option><option>保険会社</option></select><select id="status"><option value="">受付：すべて</option><option>受付中</option><option>一部受付中</option><option>新規受付終了</option><option>自動付帯</option><option>既存回線のみ</option><option>提供終了</option><option>月額補償なし</option></select><select id="byod"><option value="">持込：すべて</option><option value="yes">対応あり</option><option value="conditional">条件付き</option><option value="no">非対応</option></select></div>
 <div id="count" class="count"></div><main id="cards" class="cards"></main>
 <div class="note">料金・対象機種・加入期限は変更されることがあります。契約や修理申込の直前には各カードの公式リンクで最新条件を確認してください。</div>
 </div>
 <button id="install" class="install" type="button">アプリをインストール</button>
 <script src="./data.js"></script>
+<script src="./extra-data.js"></script>
 <script>
 const $=s=>document.querySelector(s),cards=$('#cards'),q=$('#q'),type=$('#type'),status=$('#status'),byod=$('#byod'),count=$('#count');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function badge(s){return s==='受付中'||s==='自動付帯'?'ok':s.includes('終了')||s==='提供終了'?'closed':'warn'}
-function render(){const query=q.value.trim().toLowerCase();const rows=(window.WARRANTY_DATA||[]).filter(x=>(!query||Object.values(x).join(' ').toLowerCase().includes(query))&&(!type.value||x.type===type.value)&&(!status.value||x.status===status.value)&&(!byod.value||x.byod===byod.value));count.textContent=`${rows.length} / ${(window.WARRANTY_DATA||[]).length} ブランドを表示`;cards.innerHTML=rows.length?rows.map(x=>`<article class="card"><div class="cardHead"><div class="brand">${esc(x.brand.replace(/\s+(MNO|MVNO|オンライン\/サブ)$/,''))}</div><div class="type">${esc(x.type)}</div><span class="status ${badge(x.status)}">${esc(x.reception)}</span></div>${[['サービス',x.service],['月額',x.monthly],['修理・交換負担',x.cost],['補償範囲',x.coverage],['持込端末',x.bring],['盗難・紛失',x.theft],['加入条件',x.join],['補足',x.note]].map(([a,b])=>`<div class="row"><div class="label">${a}</div><div>${esc(b)}</div></div>`).join('')}<div class="links">${x.links.map(l=>`<a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.name)}</a>`).join('')}</div></article>`).join(''):'<div class="empty">条件に一致するブランドがありません。</div>'}
+function render(){const query=q.value.trim().toLowerCase();const rows=(window.WARRANTY_DATA||[]).filter(x=>(!query||Object.values(x).join(' ').toLowerCase().includes(query))&&(!type.value||x.type===type.value)&&(!status.value||x.status===status.value)&&(!byod.value||x.byod===byod.value));count.textContent=`${rows.length} / ${(window.WARRANTY_DATA||[]).length} 件を表示`;cards.innerHTML=rows.length?rows.map(x=>`<article class="card"><div class="cardHead"><div class="brand">${esc(x.brand.replace(/\s+(MNO|MVNO|オンライン\/サブ|保険会社)$/,''))}</div><div class="type">${esc(x.type)}</div><span class="status ${badge(x.status)}">${esc(x.reception)}</span></div>${[['サービス',x.service],['月額',x.monthly],['修理・交換負担',x.cost],['補償範囲',x.coverage],['持込端末',x.bring],['盗難・紛失',x.theft],['加入条件',x.join],['補足',x.note]].map(([a,b])=>`<div class="row"><div class="label">${a}</div><div>${esc(b)}</div></div>`).join('')}<div class="links">${x.links.map(l=>`<a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.name)}</a>`).join('')}</div></article>`).join(''):'<div class="empty">条件に一致する項目がありません。</div>'}
 [q,type,status,byod].forEach(el=>el.addEventListener(el===q?'input':'change',render));render();
 if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 let deferredPrompt;const install=$('#install');window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;install.style.display='block'});install.addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;install.style.display='none'});window.addEventListener('appinstalled',()=>install.style.display='none');
