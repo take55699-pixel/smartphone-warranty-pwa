@@ -13,18 +13,18 @@
 
   // Rakuten Mobile: Rakuten Certified iPhones became eligible for Replacement Warranty Plus & Appliance Coverage on 2026-06-17.
   patch("楽天モバイル MNO",{
-    service:"購入Android・モバイルルーター／Rakuten認定中古iPhone：スマホ交換保証プラス & 家電補償 / 新品iPhone：AppleCare系 / 持込：持ち込みスマホあんしん保証",
-    monthly:"購入Android等：980 / 1,180 / 1,380 / 1,580円/月（製品価格別） / Rakuten認定中古iPhone：1,310 / 1,490 / 1,650円/月 / 持込：715〜1,309円/月 / 新品iPhone：機種別",
-    cost:"スマホ交換保証プラス & 家電補償：6,600円または12,900円 / 持込：6,600円または12,100円",
-    coverage:"購入Android・モバイルルーター／Rakuten認定中古iPhone：故障・破損・水濡れ・盗難・紛失 / 持込：破損・全損・水没等",
-    theft:"スマホ交換保証プラス & 家電補償：○（盗難・紛失） / 持込：×",
-    note:"2026年6月17日からRakuten認定中古iPhoneもスマホ交換保証プラス & 家電補償の対象。スマホ交換保証は年3回まで、うち盗難・紛失は年2回まで。"
+    service:"購入Android・モバイルルーター／Rakuten認定中古iPhone：スマホ交換保証プラス & 家電補償 / 新品iPhone：故障紛失保証 with AppleCare Services & iCloud+ / 持込：持ち込みスマホあんしん保証",
+    monthly:"購入Android等：980 / 1,180 / 1,380 / 1,580円/月（製品価格別） / Rakuten認定中古iPhone：1,310 / 1,490 / 1,650円/月 / 持込：715〜1,309円/月 / 新品iPhone：1,310 / 1,490 / 1,650円/月（機種別）",
+    cost:"スマホ交換保証プラス & 家電補償：6,600円または12,900円 / 持込：6,600円または12,100円 / 新品iPhone：AppleCare系の事故種別・機種条件による",
+    coverage:"購入Android・モバイルルーター／Rakuten認定中古iPhone：故障・破損・水濡れ・盗難・紛失 / 持込：破損・全損・水没等 / 新品iPhone：AppleCare系の補償内容に準拠",
+    theft:"スマホ交換保証プラス & 家電補償：○（盗難・紛失） / 持込：× / 新品iPhone：故障紛失保証の条件に準拠",
+    note:"2026年6月17日からRakuten認定中古iPhoneもスマホ交換保証プラス & 家電補償の対象。交換保証は年3回まで、うち盗難・紛失は年2回まで。認定中古は購入時のみ加入可能。"
   });
 
   // BIGLOBE: the service cannot be subscribed to standalone.
   patch("BIGLOBE mobile MVNO",{
-    join:"BIGLOBEモバイルのSIMまたは一部サービスとの同時申込時に受付。本サービス単独での申込は不可。保証開始は原則申込月の翌月1日。解約後の再申込不可。",
-    note:"対象端末は90日以内にBIGLOBEモバイルSIMで通信実績が必要。故障・破損発生日から10日を超えた申出は受付不可。"
+    join:"BIGLOBEモバイルのSIMまたは一部サービスとの同時申込時に受付。本サービス単独での申込は不可。保証開始は原則申込月（回線同時申込時は回線開始月）の翌月1日。解約後の再申込不可。",
+    note:"対象端末は申請日から過去90日以内にBIGLOBEモバイルSIMで通信実績が必要。故障・破損発生日から10日を超えた申出は受付不可。"
   });
 
   // AEON Mobile: a dedicated bring-your-own-device warranty is currently offered.
@@ -44,17 +44,25 @@
     ]
   });
 
+  // J:COM: make current/legacy iPhone and Pixel 8a exceptions explicit.
+  patch("J:COM MOBILE MVNO",{
+    service:"購入Android：安心端末保証60 / 新品iPhone：AppleCare+等 / 持込・他社端末：家族のスマホ保険 / 旧au Certified iPhone：端末保証 for iPhone（新規受付終了）",
+    monthly:"安心端末保証60：660円/月（Google Pixel 8aは880円） / 家族のスマホ保険：2台680円/月、追加1台200円（最大10台） / 旧au Certified iPhone端末保証：既加入者向け",
+    cost:"安心端末保証60：通常Android 1回目0円・2回目5,500円・3回目以降21,780円、Pixel 8aは5,500円・11,000円・21,780円 / 家族のスマホ保険：免責0円、2台プランは修理費用最大10万円、再取得費用最大5万円（1台2.5万円上限）、両者合計10万円まで / 旧au Certified iPhone端末保証：11,000円・16,500円・21,780円",
+    note:"家族のスマホ保険は発売5年以内など所定条件を満たす他社購入・中古スマホも加入可能。旧au Certified iPhone向け「端末保証 for iPhone」は新規受付終了。"
+  });
+
   // NifMo: normalize malformed website tax rendering to the amounts stated in the current terms.
   patch("NifMo MVNO",{
     monthly:"現行：550円/月（税込）",
     cost:"現行：交換1回目 S 33,000円 / A 16,500円 / B 5,500円、2回目 S 38,500円 / A 22,000円 / B 11,000円（すべて税込）",
-    note:"現行for SIMフリーは盗難・紛失対象外。料金は最新利用規約の税込額を採用（公式Web本文には税込欄の表示欠落あり）。"
+    note:"現行for SIMフリーは盗難・紛失対象外。料金は2026年4月10日改定の現行利用規約の税込額を採用（公式Web本文の税込欄は表示崩れあり）。"
   });
 
-  // Sakura Small Amount & Short Term Insurance: loss/left-behind is explicitly excluded in the FAQ.
+  // Sakura Small Amount & Short Term Insurance: loss/left-behind is excluded; theft is covered.
   patch("さくら少額短期保険 保険会社",{
     theft:"盗難：○ / 紛失・置き忘れ：×",
-    note:"キャリア回線とは独立した保険。機種変更やキャリア乗換後も登録端末を変更して継続可能。主端末は責任開始後すぐ補償、副端末を初めて追加登録する場合は登録日から30日間免責。"
+    note:"キャリア回線とは独立した保険。機種変更やキャリア乗換後も登録端末を変更して継続可能。主端末は免責期間なし、副端末を初めて追加登録する場合は30日間の免責期間あり。"
   });
 
   // Basic data-integrity guard: remove accidental duplicate brands while preserving first occurrence.
