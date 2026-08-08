@@ -1,6 +1,6 @@
 window.WARRANTY_DATA=window.WARRANTY_DATA||[];
 
-// Independent mobile-device insurance.
+// Independent mobile-device insurance: Sakura Small Amount & Short Term Insurance.
 window.WARRANTY_DATA.push({
   type:"保険会社",
   status:"受付中",
@@ -18,6 +18,27 @@ window.WARRANTY_DATA.push({
   links:[
     {name:"モバイル保険 公式 ↗",href:"https://mobile-hoken.com/service.html"},
     {name:"さくら少額短期保険 ↗",href:"https://www.sakura-ssi.co.jp/"}
+  ]
+});
+
+// Independent mobile-device insurance: J:COM Small Amount & Short Term Insurance.
+window.WARRANTY_DATA.push({
+  type:"保険会社",
+  status:"受付中",
+  byod:"yes",
+  brand:"ジェイコム少額短期保険 保険会社",
+  reception:"受付中",
+  service:"家族のスマホ保険",
+  monthly:"2台680円/月、3台880円/月、以降1台追加につき200円/月（最大10台・保険料は非課税）",
+  cost:"免責金額0円。2台プランは修理費用最大10万円、修理不能・盗難の再取得費用最大5万円（1台2.5万円上限）、両者合計10万円まで。補償台数が増えると上限も増額。",
+  coverage:"故障・破損・水濡れの修理費用、修理不能・盗難時の再取得費用。",
+  bring:"○ キャリア不問。他社購入・中古スマホも、発売5年以内など所定条件を満たせば対象。最低2台〜最大10台。",
+  theft:"盗難：○ / 紛失：×（公式の保険金支払事由に含まれない）",
+  join:"対象機器の事前登録が必要。発売5年以内、日本国内販売のメーカー純正品、技適表示、申込時に全機能が正常かつ外装破損なし等の条件。保険契約者は成人した個人で、被保険者は本人・2親等内の親族等。",
+  note:"J:COM MOBILEの端末保証とは別の保険商品。引受会社はジェイコム少額短期保険株式会社、取扱代理店はJ:COMグループ各社。毎月20日までの申込で、原則翌月1日から補償開始。",
+  links:[
+    {name:"家族のスマホ保険 ↗",href:"https://www.jcom.co.jp/service/ssi/kazoku_sumaho/"},
+    {name:"補償内容 ↗",href:"https://www.jcom.co.jp/service/ssi/kazoku_sumaho/detail/"}
   ]
 });
 
@@ -64,11 +85,21 @@ window.WARRANTY_DATA.push({
     ]
   });
 
+  // Keep J:COM MOBILE carrier warranty separate from J:COM's independent insurance product.
   patch("J:COM MOBILE MVNO",{
-    service:"購入Android：安心端末保証60 / 新品iPhone：AppleCare+等 / 持込・他社端末：家族のスマホ保険 / 旧au Certified iPhone：端末保証 for iPhone（新規受付終了）",
-    monthly:"安心端末保証60：660円/月（Google Pixel 8aは880円） / 家族のスマホ保険：2台680円/月、追加1台200円（最大10台） / 旧au Certified iPhone端末保証：既加入者向け",
-    cost:"安心端末保証60：通常Android 1回目0円・2回目5,500円・3回目以降21,780円、Pixel 8aは5,500円・11,000円・21,780円 / 家族のスマホ保険：免責0円、2台プランは修理費用最大10万円、再取得費用最大5万円（1台2.5万円上限）、両者合計10万円まで / 旧au Certified iPhone端末保証：11,000円・16,500円・21,780円",
-    note:"家族のスマホ保険は発売5年以内など所定条件を満たす他社購入・中古スマホも加入可能。旧au Certified iPhone向け「端末保証 for iPhone」は新規受付終了。"
+    byod:"no",
+    service:"購入Android：安心端末保証60 / 新品iPhone：AppleCare+等 / 旧au Certified iPhone：端末保証 for iPhone（新規受付終了）",
+    monthly:"安心端末保証60：660円/月（Google Pixel 8aは880円） / 新品iPhone：AppleCare+等の機種別料金 / 旧au Certified iPhone端末保証：既加入者向け",
+    cost:"安心端末保証60：通常Android 1回目0円・2回目5,500円・3回目以降21,780円、Pixel 8aは5,500円・11,000円・21,780円 / 旧au Certified iPhone端末保証：11,000円・16,500円・21,780円",
+    coverage:"購入端末向けの故障・破損・水濡れ等。iPhoneは加入するAppleCare系サービスの条件による。",
+    bring:"× J:COM MOBILEの購入端末向け保証。キャリア不問の「家族のスマホ保険」は保険会社カテゴリに別掲載。",
+    theft:"安心端末保証60：盗難補償としては扱わない / iPhone：加入するAppleCare系サービスの条件による",
+    join:"安心端末保証60はJ:COM MOBILE対象端末の購入と同時加入。旧au Certified iPhone向け端末保証は新規受付終了。",
+    note:"Google Pixel 8aは安心端末保証60の月額・交換負担金が通常Androidと異なる。旧au Certified iPhone向け「端末保証 for iPhone」は新規受付終了。",
+    links:[
+      {name:"安心端末保証60 ↗",href:"https://www.jcom.co.jp/service/mobile/option/guaranty60/"},
+      {name:"旧iPhone端末保証 ↗",href:"https://www.jcom.co.jp/service/mobile/option/guaranty/iphone/"}
+    ]
   });
 
   patch("NifMo MVNO",{
