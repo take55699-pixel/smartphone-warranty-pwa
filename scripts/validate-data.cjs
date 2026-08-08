@@ -12,7 +12,7 @@ for(const file of ['data.js','extra-data.js']){
 }
 const rows=context.window.WARRANTY_DATA;
 assert(Array.isArray(rows),'WARRANTY_DATA must be an array');
-assert(rows.length===25,`expected 25 entries, got ${rows.length}`);
+assert(rows.length===26,`expected 26 entries, got ${rows.length}`);
 
 const required=['type','status','byod','brand','reception','service','monthly','cost','coverage','bring','theft','join','note','links'];
 const types=new Set(['MNO','オンライン/サブ','MVNO','保険会社']);
@@ -41,7 +41,10 @@ assert(get('楽天モバイル MNO').service.includes('Rakuten認定中古iPhone
 assert(get('NifMo MVNO').monthly.includes('550円'),'NifMo monthly fee regression');
 assert(get('NifMo MVNO').cost.includes('38,500'),'NifMo tax-inclusive exchange fee regression');
 assert(get('さくら少額短期保険 保険会社').theft.includes('紛失・置き忘れ：×'),'Sakura loss exclusion regression');
+assert(get('J:COM MOBILE MVNO').byod==='no','J:COM carrier row must not inherit independent insurance BYOD');
 assert(get('J:COM MOBILE MVNO').cost.includes('Pixel 8a'),'J:COM Pixel 8a exception regression');
+assert(get('ジェイコム少額短期保険 保険会社').byod==='yes','J:COM insurance BYOD regression');
+assert(get('ジェイコム少額短期保険 保険会社').service==='家族のスマホ保険','J:COM insurance separation regression');
 
 const index=fs.readFileSync('index.html','utf8');
 assert(index.includes('./data.js')&&index.includes('./extra-data.js'),'index must load both data files');
