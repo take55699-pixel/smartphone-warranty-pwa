@@ -1,9 +1,19 @@
 (function(){
   const rows=window.WARRANTY_DATA||[];
-  const item=rows.find(x=>x.brand==='さくら少額短期保険 保険会社');
-  if(!item) return;
-  Object.assign(item,{
+  const patch=(brand,changes)=>{
+    const item=rows.find(x=>x.brand===brand);
+    if(item) Object.assign(item,changes);
+  };
+
+  patch('さくら少額短期保険 保険会社',{
     cost:'修理可能：補償上限内は自己負担金なし。年間通算最大15万円。主端末は最大15万円、副端末2台は合計最大4万5千円。修理不能・盗難：主端末最大37,500円、副端末は1台最大11,250円。',
     note:'キャリア回線とは独立した保険。機種変更やキャリア乗換後も登録端末を変更して継続可能。主端末は免責期間なし、副端末を初めて追加登録する場合は30日間の免責期間あり。2026年8月8日時点の公式サービス内容ページでは年間最大15万円。'
+  });
+
+  patch('OCN モバイル ONE MVNO',{
+    reception:'既存回線のみ',
+    status:'既存回線のみ',
+    join:'OCN モバイル ONE自体は新規回線受付終了。現在の公式サポートでは、既存のOCN モバイル ONE音声対応SIM契約者向けに「あんしん補償」の申込手順が案内されている。',
+    note:'月額550円。将来の新規受付終了日・サービス終了日は、2026年8月8日時点の現行公式サポート／利用規約で確認できないため断定しない。'
   });
 })();
