@@ -50,6 +50,9 @@ assert(get('J:COM MOBILE MVNO').byod==='no','J:COM carrier row must not inherit 
 assert(get('J:COM MOBILE MVNO').cost.includes('Pixel 8a'),'J:COM Pixel 8a exception regression');
 assert(get('ジェイコム少額短期保険 保険会社').byod==='yes','J:COM insurance BYOD regression');
 assert(get('ジェイコム少額短期保険 保険会社').service==='家族のスマホ保険','J:COM insurance separation regression');
+const ocn=get('OCN モバイル ONE MVNO');
+assert(ocn.status==='既存回線のみ','OCN must be limited to existing mobile-one lines');
+assert(!ocn.join.includes('2026年9月30日')&&!ocn.note.includes('2027年1月31日'),'OCN unsupported future end date regression');
 
 const index=fs.readFileSync('index.html','utf8');
 assert(index.includes('./data.js')&&index.includes('./extra-data.js')&&index.includes('./live-fixes.js'),'index must load all data/fix files');
