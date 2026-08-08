@@ -24,6 +24,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Validate warranty data
+        run: |
+          node --check data.js
+          node --check extra-data.js
+          node --check sw.js
+          node scripts/validate-data.cjs
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
