@@ -6,7 +6,7 @@ function assert(cond,msg){ if(!cond) fail(msg); }
 
 const context={window:{}};
 vm.createContext(context);
-for(const file of ['data.js','extra-data.js']){
+for(const file of ['data.js','extra-data.js','live-fixes.js']){
   const src=fs.readFileSync(file,'utf8');
   new vm.Script(src,{filename:file}).runInContext(context);
 }
@@ -40,15 +40,20 @@ assert(get('povo 2.0 オンライン/サブ').cost.includes('11,000')&&get('povo
 assert(get('楽天モバイル MNO').service.includes('Rakuten認定中古iPhone'),'Rakuten Certified coverage regression');
 assert(get('NifMo MVNO').monthly.includes('550円'),'NifMo monthly fee regression');
 assert(get('NifMo MVNO').cost.includes('38,500'),'NifMo tax-inclusive exchange fee regression');
-assert(get('さくら少額短期保険 保険会社').theft.includes('紛失・置き忘れ：×'),'Sakura loss exclusion regression');
+const sakura=get('さくら少額短期保険 保険会社');
+assert(sakura.theft.includes('紛失・置き忘れ：×'),'Sakura loss exclusion regression');
+assert(sakura.cost.includes('最大15万円'),'Sakura annual 150k limit regression');
+assert(sakura.cost.includes('4万5千円'),'Sakura secondary-device 45k limit regression');
+assert(sakura.cost.includes('37,500'),'Sakura unrepaired/theft primary limit regression');
+assert(sakura.cost.includes('11,250'),'Sakura unrepaired/theft secondary limit regression');
 assert(get('J:COM MOBILE MVNO').byod==='no','J:COM carrier row must not inherit independent insurance BYOD');
 assert(get('J:COM MOBILE MVNO').cost.includes('Pixel 8a'),'J:COM Pixel 8a exception regression');
 assert(get('ジェイコム少額短期保険 保険会社').byod==='yes','J:COM insurance BYOD regression');
 assert(get('ジェイコム少額短期保険 保険会社').service==='家族のスマホ保険','J:COM insurance separation regression');
 
 const index=fs.readFileSync('index.html','utf8');
-assert(index.includes('./data.js')&&index.includes('./extra-data.js'),'index must load both data files');
+assert(index.includes('./data.js')&&index.includes('./extra-data.js')&&index.includes('./live-fixes.js'),'index must load all data/fix files');
 const sw=fs.readFileSync('sw.js','utf8');
-assert(sw.includes("'./extra-data.js'"),'service worker must cache extra-data.js');
+assert(sw.includes("'./extra-data.js'")&&sw.includes("'./live-fixes.js'"),'service worker must cache all data/fix files');
 
 console.log(`OK: ${rows.length} unique entries validated`);
