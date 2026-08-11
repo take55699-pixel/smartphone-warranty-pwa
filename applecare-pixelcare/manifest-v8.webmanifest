@@ -1,0 +1,17 @@
+{
+  "name": "AppleCare+ × Pixel Care+ 比較",
+  "short_name": "Care比較",
+  "description": "日本向けAppleCare+とPixel Care+の補償内容・自己負担・加入条件を比較",
+  "id": "/smartphone-warranty-pwa/applecare-pixelcare/app-v8",
+  "start_url": "/smartphone-warranty-pwa/applecare-pixelcare/app-v8.html",
+  "scope": "/smartphone-warranty-pwa/applecare-pixelcare/",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#0b1020",
+  "lang": "ja-JP",
+  "prefer_related_applications": false,
+  "icons": [
+    {"src":"./icons/care-v8-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"./icons/care-v7.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
