@@ -1,4 +1,4 @@
-const CACHE_NAME='applecare-pixelcare-pwa-v1';
+const CACHE_NAME='applecare-pixelcare-pwa-v2';
 const APP_SHELL=[
   './',
   './index.html',
