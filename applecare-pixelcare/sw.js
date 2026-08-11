@@ -1,12 +1,12 @@
-const CACHE_NAME='applecare-pixelcare-pwa-v2';
+const CACHE_NAME='applecare-pixelcare-pwa-v3';
 const APP_SHELL=[
   './',
   './index.html',
   './manifest.webmanifest',
-  './icons/icon-180.png',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-  './icons/icon-maskable-512.png'
+  './icons/care-flat-180-v3.png',
+  './icons/care-flat-192-v3.png',
+  './icons/care-flat-512-v3.png',
+  './icons/care-flat-maskable-512-v3.png'
 ];
 
 self.addEventListener('install', event => {
