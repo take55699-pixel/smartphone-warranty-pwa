@@ -1,15 +1,17 @@
 {
   "name": "スマホ補償比較",
   "short_name": "補償比較",
-  "description": "主要キャリア・MVNOのスマホ修理・端末補償サービス比較",
+  "description": "主要キャリア・MVNO・独立系保険会社のスマホ修理・端末補償サービス比較",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#0b1020",
-  "theme_color": "#0b1020",
+  "background_color": "#08101f",
+  "theme_color": "#08101f",
   "orientation": "portrait-primary",
+  "lang": "ja-JP",
   "icons": [
-    {"src":"./icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"./icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {"src":"./icons/warranty-pwa-20260812-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"./icons/warranty-pwa-20260812-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
+    {"src":"./icons/warranty-pwa-20260812-maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
   ]
 }
