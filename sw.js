@@ -1,5 +1,6 @@
 const CACHE_PREFIX='smartphone-warranty-root-';
-const CACHE_NAME='smartphone-warranty-root-v7';
+const CACHE_NAME='smartphone-warranty-root-v8';
+const LEGACY_CACHE_RE=/^smartphone-warranty-pwa-v\d+$/;
 const CORE=[
   './',
   './index.html',
@@ -20,7 +21,9 @@ self.addEventListener('install',event=>{
 self.addEventListener('activate',event=>{
   event.waitUntil(
     caches.keys().then(keys=>Promise.all(
-      keys.filter(k=>k.startsWith(CACHE_PREFIX)&&k!==CACHE_NAME).map(k=>caches.delete(k))
+      keys
+        .filter(k=>(k.startsWith(CACHE_PREFIX)||LEGACY_CACHE_RE.test(k))&&k!==CACHE_NAME)
+        .map(k=>caches.delete(k))
     ))
   );
   self.clients.claim();
