@@ -1,0 +1,1 @@
+PWA + shortcut icon fix v11: explicit 48px favicon and unified manifest icons.
